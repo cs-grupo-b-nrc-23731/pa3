@@ -27,7 +27,6 @@ describe('LoginComponent', () => {
       imports: [
         LoginComponent,
         ReactiveFormsModule,
-        RouterTestingModule,
         BrowserAnimationsModule,
         MatFormFieldModule,
         MatInputModule,
