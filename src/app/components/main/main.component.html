@@ -1,0 +1,36 @@
+<div class="main-container">
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Auth App</span>
+      <span class="spacer"></span>
+      <span *ngIf="currentUser">{{ currentUser.email }}</span>
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav #sidenav mode="side" opened>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/main/dashboard">
+            <mat-icon matListItemIcon>dashboard</mat-icon>
+            <span matListItemTitle>Dashboard</span>
+          </a>
+          <a mat-list-item routerLink="/main/profile">
+            <mat-icon matListItemIcon>person</mat-icon>
+            <span matListItemTitle>Perfil</span>
+          </a>
+          <a mat-list-item routerLink="/main/settings">
+            <mat-icon matListItemIcon>settings</mat-icon>
+            <span matListItemTitle>Configuración</span>
+          </a>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content class="content">
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
