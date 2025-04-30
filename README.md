@@ -1,27 +1,44 @@
-# AuthApp
+# Auth-App - Aplicación Angular 18
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.19.
+Aplicación de autenticación de usuarios con Angular 18 y Material Design.
 
-## Development server
+## Requisitos previos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Node.js (versión 18.0.0 o superior)
+- npm (versión 9.0.0 o superior)
+- Angular CLI (versión 18.0.0 o superior)
 
-## Code scaffolding
+## Instalación
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Clonar el repositorio
+git clone https://github.com/usuario/auth-app.git
+cd auth-app
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instalar dependencias
+npm install
 
-## Running unit tests
+## Comandos disponibles
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Servidor de desarrollo
+ng serve
 
-## Running end-to-end tests
+## La aplicación estará disponible en http://localhost:4200/.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Construcción para producción
 
-## Further help
+ng build
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Los archivos de la build se almacenarán en el directorio dist/.
+
+## Ejecutar pruebas unitarias
+
+ng test
+
+## Ejecutar linting
+
+ng lint
+
+## Formatear código
+
+npx prettier --write "src/**/*.{ts,html,scss}"

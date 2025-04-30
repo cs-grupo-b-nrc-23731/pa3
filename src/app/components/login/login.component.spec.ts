@@ -27,6 +27,7 @@ describe('LoginComponent', () => {
       imports: [
         LoginComponent,
         ReactiveFormsModule,
+        RouterTestingModule,
         BrowserAnimationsModule,
         MatFormFieldModule,
         MatInputModule,
@@ -48,24 +49,24 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
   // Prueba 1: Formulario inválido cuando está vacío
-  it('should have an invalid form when empty', () => {
+  it('debería tener un formulario inválido cuando está vacío', () => {
     expect(component.loginForm.valid).toBeFalsy();
   });
 
   // Prueba 2: Validación de email requerido
-  it('should validate email is required', () => {
+  it('debería validar que el email es requerido', () => {
     const email = component.loginForm.controls['email'];
     expect(email.valid).toBeFalsy();
     expect(email.errors?.['required']).toBeTruthy();
   });
 
   // Prueba 3: Validación de formato de email
-  it('should validate email format', () => {
+  it('debería validar el formato del email', () => {
     const email = component.loginForm.controls['email'];
     email.setValue('test');
     expect(email.valid).toBeFalsy();
@@ -76,14 +77,14 @@ describe('LoginComponent', () => {
   });
 
   // Prueba 4: Validación de contraseña requerida
-  it('should validate password is required', () => {
+  it('debería validar que la contraseña es requerida', () => {
     const password = component.loginForm.controls['password'];
     expect(password.valid).toBeFalsy();
     expect(password.errors?.['required']).toBeTruthy();
   });
 
   // Prueba 5: Formulario válido con datos correctos
-  it('should have a valid form with correct data', () => {
+  it('debería tener un formulario válido con datos correctos', () => {
     const email = component.loginForm.controls['email'];
     const password = component.loginForm.controls['password'];
     
@@ -94,7 +95,7 @@ describe('LoginComponent', () => {
   });
 
   // Prueba 6: Autenticación exitosa
-  it('should navigate to main page on successful login', () => {
+  it('debería navegar a la página principal con un login exitoso', () => {
     const mockUser: User = {
       id: 1,
       email: 'test@example.com',
@@ -117,7 +118,7 @@ describe('LoginComponent', () => {
   });
 
   // Prueba 7: Autenticación fallida
-  it('should show error message on failed login', () => {
+  it('debería mostrar un mensaje de error cuando falla el login', () => {
     userService.authenticateUser.and.returnValue(of(null));
     
     component.loginForm.controls['email'].setValue('wrong@example.com');

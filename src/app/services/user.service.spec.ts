@@ -44,12 +44,12 @@ describe('UserService', () => {
     httpClientSpy.get.calls.reset();
   });
 
-  it('should be created', () => {
+  it('debería crearse el servicio', () => {
     expect(service).toBeTruthy();
   });
 
   // Prueba 1: Carga correcta de usuarios
-  it('should load users from JSON file', () => {
+  it('debería cargar usuarios desde el archivo JSON', () => {
     // Configurar respuesta específica para esta prueba
     httpClientSpy.get.and.returnValue(of(mockUserData));
 
@@ -60,11 +60,10 @@ describe('UserService', () => {
 
     // Verificar que se llamó con la URL correcta
     expect(httpClientSpy.get).toHaveBeenCalledWith('assets/data/users.json');
-    // No verificamos la cantidad de llamadas, solo que se haya llamado con los parámetros correctos
   });
 
   // Prueba 2: Autenticación exitosa
-  it('should authenticate user with correct credentials', () => {
+  it('debería autenticar al usuario con credenciales correctas', () => {
     httpClientSpy.get.and.returnValue(of(mockUserData));
 
     service.authenticateUser('test@example.com', 'password123').subscribe(user => {
@@ -76,7 +75,7 @@ describe('UserService', () => {
   });
 
   // Prueba 3: Autenticación fallida
-  it('should fail authentication with incorrect credentials', () => {
+  it('debería fallar la autenticación con credenciales incorrectas', () => {
     httpClientSpy.get.and.returnValue(of(mockUserData));
 
     service.authenticateUser('test@example.com', 'wrongpassword').subscribe(user => {
@@ -87,7 +86,7 @@ describe('UserService', () => {
   });
 
   // Prueba 4: Obtener usuario por email
-  it('should get user by email', () => {
+  it('debería obtener un usuario por su email', () => {
     httpClientSpy.get.and.returnValue(of(mockUserData));
 
     service.getUserByEmail('test@example.com').subscribe(user => {
@@ -99,7 +98,7 @@ describe('UserService', () => {
   });
 
   // Prueba 5: Crear nuevo usuario
-  it('should create a new user', () => {
+  it('debería crear un nuevo usuario', () => {
     const newUser = {
       email: 'new@example.com',
       username: 'newuser',
@@ -119,7 +118,7 @@ describe('UserService', () => {
   });
 
   // Prueba 6: Error al crear usuario con email existente
-  it('should throw error when creating user with existing email', () => {
+  it('debería lanzar un error al crear un usuario con email existente', () => {
     const existingUser = {
       email: 'test@example.com', // Email ya existente
       username: 'newuser',
@@ -130,7 +129,7 @@ describe('UserService', () => {
     httpClientSpy.get.and.returnValue(of(mockUserData));
 
     service.createUser(existingUser).subscribe({
-      next: () => fail('Should have failed with email already exists'),
+      next: () => fail('Debería haber fallado con email ya registrado'),
       error: (error) => {
         expect(error.message).toBe('El correo electrónico ya está registrado');
       }
@@ -140,7 +139,7 @@ describe('UserService', () => {
   });
 
   // Prueba 7: Actualizar contraseña de usuario
-  it('should update user password', () => {
+  it('debería actualizar la contraseña del usuario', () => {
     // Modificar los datos para esta prueba específica
     const passwordTestData = {
       users: [
@@ -167,7 +166,7 @@ describe('UserService', () => {
   });
 
   // Prueba 8: Activar/desactivar usuario
-  it('should toggle user active status', () => {
+  it('debería cambiar el estado activo del usuario', () => {
     httpClientSpy.get.and.returnValue(of(mockUserData));
 
     service.toggleUserActive(1).subscribe(user => {
